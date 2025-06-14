@@ -1,0 +1,20 @@
+jobs:
+  job1:
+    name: First Job
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Run a script
+        run: env | sort
+  job2:
+    name: Second Job
+    runs-on: windows-latest
+    needs: job1
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Run a script
+        run: Get-ChildItem env: | Sort-Object Name
